@@ -1,5 +1,5 @@
 <template>
-        <button class="evue-button" :class="{[`evues-themes-${themes}`]:themes}">
+        <button class="evue-button" :class="{[`evue-themes-${themes}`]:themes}">
             <slot />
         </button>
 </template>
@@ -47,6 +47,22 @@
         /*由于火狐上面那个focus不支持*/
         &::-moz-focus-inner {
             border: 0;
+        }
+        &.evue-themes-link{
+            border-color: transparent;
+            box-shadow: none;
+            color: $blue;
+            &:hover,&:focus{
+                color: lighten($blue, 10%);
+            }
+        }
+        &.evue-themes-text{
+            border-color: transparent;
+            box-shadow: none;
+            color: inherit;
+            &:hover,&:focus{
+                background: darken(white, 5%);;
+            }
         }
     }
 </style>
