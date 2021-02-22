@@ -1,5 +1,5 @@
 <template>
-    <button @click="toggle" :class="{checked:value}"><span></span></button>
+    <button @click="toggle" class="evue-switch" :class="{'evue-checked':value}"><span></span></button>
 </template>
 
 <script lang="ts">
@@ -20,10 +20,10 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     $h: 22px;
     $h2: $h - 4px;
-    button{
+    .evue-switch{
         height: $h;
         width: $h*2;
         border: none;
@@ -40,7 +40,7 @@
             border-radius: $h2 / 2;
             transition: all 250ms;
         }
-        &.checked {
+        &.evue-checked {
             background: lightgreen;
             > span {
                 left: calc(100% - #{$h2} - 2px);
@@ -52,7 +52,7 @@
         &:active{
             > span {width: $h2 + 4px;}
         }
-        &.checked:active{
+        &evue-.checked:active{
             > span {width: $h2 + 4px; margin-left: -4px;}
         }
 
