@@ -3,10 +3,9 @@
         <div class="evue-dialog-overlay" @click="closeOnclickOverlay"></div>
         <div class="evue-dialog-wrapper">
             <div class="evue-dialog">
-                <header>标题 <span @click="close" class="evue-dialog-close"></span></header>
+                <header><slot name="title"></slot> <span @click="close" class="evue-dialog-close"></span></header>
                 <main>
-                    <p>第一行</p>
-                    <p>第二行</p>
+                    <slot name="content"></slot>
                 </main>
                 <footer>
                     <Button class="yes" @click="ok">确定</Button>
