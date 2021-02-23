@@ -1,18 +1,20 @@
 <template>
     <template v-if="isvisible">
-        <div class="evue-dialog-overlay" @click="closeOnclickOverlay"></div>
-        <div class="evue-dialog-wrapper">
-            <div class="evue-dialog">
-                <header><slot name="title"></slot> <span @click="close" class="evue-dialog-close"></span></header>
-                <main>
-                    <slot name="content"></slot>
-                </main>
-                <footer>
-                    <Button class="yes" @click="ok">确定</Button>
-                    <Button class="no" @click="cancel">取消</Button>
-                </footer>
+        <teleport to="body">
+            <div class="evue-dialog-overlay" @click="closeOnclickOverlay"></div>
+            <div class="evue-dialog-wrapper">
+                <div class="evue-dialog">
+                    <header><slot name="title"></slot> <span @click="close" class="evue-dialog-close"></span></header>
+                    <main>
+                        <slot name="content"></slot>
+                    </main>
+                    <footer>
+                        <Button class="yes" @click="ok">确定</Button>
+                        <Button class="no" @click="cancel">取消</Button>
+                    </footer>
+                </div>
             </div>
-        </div>
+        </teleport>
     </template>
 </template>
 
