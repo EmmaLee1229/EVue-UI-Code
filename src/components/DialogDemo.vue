@@ -41,7 +41,7 @@
                     console.log('yes')
                     },no:()=>{
                     console.log('no')
-                    }})
+                    },closeOnclickOverlay:()=>{}})
             }
             return {
                 visible,toggle,yes,no,showDialog
