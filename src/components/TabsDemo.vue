@@ -2,7 +2,7 @@
    <h1>Tabs组件</h1>
     <Tabs v-model:selected="x">
         <Tab title="导航1">标题一</Tab>
-        <Tab title="导航2">标题二</Tab>
+        <Tab title="导航2导航2导航2导航2">标题二</Tab>
     </Tabs>
 </template>
 
