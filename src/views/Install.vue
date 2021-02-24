@@ -1,20 +1,17 @@
 <template>
-    <article class="markdown-body">
-        <h1>安装</h1>
-        <p>打开终端运行下列命令：</p>
-        <pre><code>npm install evue-ui</code></pre>
-        <p>或</p>
-        <pre><code>yarn add evue-ui</code></pre>
+    <article class="markdown-body" v-html="install">
 
-        <p>
-            下一节：<a href="#/doc/get-start">开始使用</a>
-        </p>
     </article>
 </template>
 
-<script lang="ts">
+<script>
+    import install from '../markdown/install.md'
     export default {
-
+        data(){
+            return {
+                install
+            }
+        }
     }
 </script>
 

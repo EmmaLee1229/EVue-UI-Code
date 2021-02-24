@@ -31,3 +31,18 @@ h1,h2,h3,h4,h5,h6{
   fill: currentColor;
   overflow: hidden;
 }
+.markdown-body {
+  >h1,h2,h3,h4,h5,h6 {
+    color:darken(#7d5a5a,10%);
+  }
+}
+.markdown-body code{
+  color:#7d5a5a;
+  font-size: 110%!important;
+}
+.markdown-body a{
+  color:#7d5a5a!important;
+}
+.markdown-body blockquote {
+  background: lighten(#7d5a5a,50%);
+}

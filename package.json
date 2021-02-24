@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@vue/compiler-sfc": "^3.0.0-rc.1",
+    "marked": "^2.0.0",
     "sass": "1.26.10",
     "svg-sprite-loader": "^5.2.1",
     "svgo-loader": "^2.2.1",
