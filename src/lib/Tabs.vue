@@ -1,7 +1,7 @@
 <template>
         <div class="evue-tabs">
             <div class="evue-tabs-nav" ref="container">
-                <div @click="changeSelected(t)"  v-for="(t,index) in titles" :ref="el => { if (el) navItems[index] = el }" class="evue-tabs-nav-item" :class="{selected: t=== selected}" :key="index" >{{t}}</div>
+                <div @click="changeSelected(t)"  v-for="(t,index) in titles" :ref="el => { if (t===selected) selectedItem = el }" class="evue-tabs-nav-item" :class="{selected: t=== selected}" :key="index" >{{t}}</div>
                 <div class="evue-tabs-nav-indicator" ref="indicator"></div>
             </div>
              <div class="evue-tabs-content">
@@ -21,15 +21,13 @@
         },
 
         setup(props,context){
-            const navItems = ref<HTMLDivElement[]>([]);
+            const selectedItem = ref<HTMLDivElement>(null);
             const indicator =ref<HTMLDivElement>(null);
             const container = ref<HTMLDivElement>(null);
             const getValue=()=>{
-                const divs= navItems.value;
-                const target = divs.filter(t=>t.classList.contains('selected'))[0]
-                const {width} = target.getBoundingClientRect()
+                const {width} = selectedItem.value.getBoundingClientRect()
             indicator.value.style.width = width+'px'
-            const {left:left1} = target.getBoundingClientRect()
+            const {left:left1} = selectedItem.value.getBoundingClientRect()
             const {left:left2} = container.value.getBoundingClientRect()
             const left = left1 -left2
             indicator.value.style.left = left +'px'
@@ -47,7 +45,7 @@
                 context.emit('update:selected',title)
             }
 
-            return {defaults,titles,changeSelected,navItems,indicator,container}
+            return {defaults,titles,changeSelected,selectedItem,indicator,container}
         }
     }
 </script>
