@@ -1,10 +1,10 @@
 <template>
         <div class="evue-tabs">
             <div class="evue-tabs-nav">
-                <div  class="evue-tabs-nav-item" v-for="(t,index) in titles" :key="index">{{t}}</div>
+                <div @click="changeSelected(t)" class="evue-tabs-nav-item" v-for="(t,index) in titles"  :class="{selected: t=== selected}" :key="index" >{{t}}</div>
             </div>
              <div class="evue-tabs-content">
-                    <component class="evue-tabs-content-item" v-for="(d,index) in defaults" :key="index" :is="d"></component>
+                 <component class="evua-tabs-content-item" v-for="c in defaults" :class="{selected:c.props.title===selected}" :is="c" />
              </div>
         </div>
 </template>
@@ -12,21 +12,30 @@
 <script lang="ts">
     import Tab from './Tab.vue'
     export default {
-    setup(props,context){
-        const defaults = context.slots.default();
-        defaults.forEach(tag=>{
-            if(tag.type!==Tab){
-                throw new Error('Tabs的子标签必须是Tab')
+        props:{
+            selected:{
+                type:String
             }
-        });
-        const titles = defaults.map(t=>t.props.title)
+        },
+        setup(props,context){
 
-        return {defaults,titles}
-    }
+            const defaults = context.slots.default();
+            defaults.forEach(tag=>{
+                if(tag.type!==Tab){
+                    throw new Error('Tabs的子标签必须是Tab')
+                }
+            });
+            const titles = defaults.map(t=>t.props.title);
+            const changeSelected=(title:string)=>{
+                context.emit('update:selected',title)
+            }
+
+            return {defaults,titles,changeSelected}
+        }
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     $blue: #40a9ff;
     $color: #333;
     $border-color: #d9d9d9;
@@ -49,6 +58,12 @@
         }
         &-content {
             padding: 8px 0;
+        }
+    }
+    .evua-tabs-content-item {
+        display: none;
+        &.selected {
+            display: block;
         }
     }
 </style>
