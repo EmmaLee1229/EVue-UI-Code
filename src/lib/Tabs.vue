@@ -12,7 +12,7 @@
 
 <script lang="ts">
     import Tab from './Tab.vue'
-    import { ref, onMounted, onUpdated } from 'vue';
+    import { ref, onMounted, onUpdated, watchEffect } from 'vue';
     export default {
         props:{
             selected:{
@@ -32,8 +32,12 @@
             const left = left1 -left2
             indicator.value.style.left = left +'px'
         };
-            onMounted(getValue);
-            onUpdated(getValue);
+            watchEffect(getValue,
+                {
+                    flush: 'post'
+                });
+            // onMounted(getValue);
+            // onUpdated(getValue);
             const defaults = context.slots.default();
             defaults.forEach(tag=>{
                 if(tag.type!==Tab){
