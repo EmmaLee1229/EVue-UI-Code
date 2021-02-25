@@ -51,9 +51,6 @@
             });
             const titles = defaults.map(t => t.props.title);
             const changeSelected = (title: string) => {
-                if(title.props.disabled){
-                    return
-                }
                 context.emit("update:selected", title);
             };
 
