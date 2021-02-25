@@ -1,7 +1,9 @@
 <template>
         <button class="evue-button" :class="classes" :disabled="disabled">
-            <img v-if="loading" src="../assets/loading.png" class=" evue-loadingIndicator">
-            <slot />
+            <svg v-if="loading" class=" evue-loadingIndicator" >
+                <use xlink:href="#icon-Loading"></use>
+            </svg>
+            <slot/>
         </button>
 </template>
 <script lang="ts">
@@ -44,7 +46,7 @@
                return{[`evue-themes-${props.themes}`]:props.themes,
                    [`evue-sizes-${props.sizes}`]:props.sizes,
                    [`evue-levels-${props.levels}`]:props.levels,
-                   [`evue-outline-${props.outline}`]:props.outline,
+                   [`evue-outline-${props.outline}`]:props.outline
                }
             })
             return {
