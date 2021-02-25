@@ -9,7 +9,6 @@
     export default {
         props:{
             value:Boolean,
-            text:String
         },
         setup(props,context){
             const toggle =()=> {
@@ -69,6 +68,14 @@
         }
         &evue-.checked:active{
             > span {width: $h2 + 4px; margin-left: -4px;}
+        }
+        &[disabled] {
+            cursor: not-allowed;
+            color: grey;
+
+            &:hover {
+                border-color: grey;
+            }
         }
 
     }

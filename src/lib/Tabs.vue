@@ -21,6 +21,9 @@
         props: {
             selected: {
                 type: String
+            },
+            disabled:{
+                type:Boolean
             }
         },
 
@@ -29,12 +32,12 @@
             const indicator = ref<HTMLDivElement>(null);
             const container = ref<HTMLDivElement>(null);
             const getValue = () => {
-                const {width} = selectedItem.value.getBoundingClientRect();
-                indicator.value.style.width = width + "px";
-                const {left: left1} = selectedItem.value.getBoundingClientRect();
-                const {left: left2} = container.value.getBoundingClientRect();
-                const left = left1 - left2;
-                indicator.value.style.left = left + "px";
+                    const {width} = selectedItem.value.getBoundingClientRect();
+                    indicator.value.style.width = width + "px";
+                    const {left: left1} = selectedItem.value.getBoundingClientRect();
+                    const {left: left2} = container.value.getBoundingClientRect();
+                    const left = left1 - left2;
+                    indicator.value.style.left = left + "px";
             };
             watchEffect(getValue,
                 {
@@ -42,7 +45,7 @@
                 });
             const defaults = context.slots.default();
             defaults.forEach(tag => {
-                if (tag.type !== Tab) {
+                if (tag.type.name !== Tab.name) {
                     throw new Error("Tabs的子标签必须是Tab");
                 }
             });
@@ -51,6 +54,9 @@
             });
             const titles = defaults.map(t => t.props.title);
             const changeSelected = (title: string) => {
+                if(title.props.disabled){
+                    return
+                }
                 context.emit("update:selected", title);
             };
 

@@ -2,11 +2,11 @@
     常规用法
 </demo>
 <template>
-    <Switch v-model:value =checked v-model:text = text />
+    <Switch v-model:value =checked />
 </template>
 
 <script lang="ts">
-    import Switch from '../lib/Switch.vue'
+    import Switch from '../../lib/Switch.vue'
     import { ref } from 'vue';
     export default {
         components:{
@@ -14,8 +14,7 @@
         },
         setup(){
             const checked = ref(false)
-            const text = ref("off")
-            return{checked,text}
+            return{checked}
         }
     }
 </script>

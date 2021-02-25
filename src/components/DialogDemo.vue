@@ -1,56 +1,21 @@
 <template>
-    <h1>对话框示例</h1>
-    <Button @click="toggle">点击打开对话框</Button>
-        <Dialog :isvisible="visible" @update:isvisible="visible=$event" :closeOnclickOverlay="false" :yes="yes" :no="no">
-            <template v-slot:content>
-                <p>这是一段文字</p>
-            </template>
-            <template v-slot:title>
-                <strong>这是一个标题</strong>
-            </template>
-        </Dialog>
-    <br>
-    <h1>用TS实现一句话打开对话框</h1>
-    <Button @click="showDialog">点击打开对话框</Button>
+    <code-demo :component="DialogDemo1"></code-demo>
+    <code-demo :component="OneDialog"></code-demo>
 </template>
 
 <script lang="ts">
-    import Dialog from "../lib/Dialog.vue";
-    import Button from "../lib/Button.vue";
-    import { ref } from "vue";
-    import { openDialog } from "../lib/openDialog";
-
+    import CodeDemo from './CodeDemo.vue';
+    import DialogDemo1 from "./DialogCode/DialogDemo1.vue";
+    import OneDialog from "./DialogCode/OneDialog.vue";
     export default {
         components:{
-            Dialog:Dialog,
-            Button:Button
+            CodeDemo
         },
         setup(){
-            const visible=ref(false)
-            const toggle =()=>{
-                visible.value=!visible.value
-            };
-            const yes=()=>{
-                return false
-            }
-            const no =()=>{
-                return true
-            };
-            const showDialog=()=>{
-                openDialog({title:"标题",content:"你好",yes:()=>{
-                    console.log('yes')
-                    },no:()=>{
-                    console.log('no')
-                    },closeOnclickOverlay:()=>{}})
-            }
             return {
-                visible,toggle,yes,no,showDialog
+                DialogDemo1,OneDialog
             }
         }
     }
 
 </script>
-
-<style lang="scss" scoped>
-
-</style>

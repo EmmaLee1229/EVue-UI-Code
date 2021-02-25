@@ -89,6 +89,7 @@
         padding-top: 70px;
         height: 100%;
         z-index: 10;
+        background: #ffffff;
         box-shadow: 1px 0 3px rgba(0,0,0,0.09);
         > h2 {
             margin-bottom: 4px;
