@@ -21,9 +21,6 @@
         props: {
             selected: {
                 type: String
-            },
-            disabled:{
-                type:Boolean
             }
         },
 
