@@ -17,9 +17,9 @@ import {Button, Tabs, Switch, Dialog} from "evue-ui"
  <div><Button>按钮</Button></div>
 </template>
 <script>
-  import {Button, Tabs, Switch, Dialog} from "evue-ui"
+  import {Button, Tabs, Switch, Dialog,OpenDialog} from "evue-ui"
   export default {
     components: {Button}
   }
-<script>
+</script>
 ```

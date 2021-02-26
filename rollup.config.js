@@ -12,8 +12,8 @@ export default {
         globals: {
             vue: 'Vue'
         },
-        name: 'Evue',
-        file: 'dist/lib/Evue.js',
+        name: 'evue',
+        file: 'dist/lib/evue.js',
         format: 'umd',
         plugins: [terser()]
     },
